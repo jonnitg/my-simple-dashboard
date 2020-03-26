@@ -1,0 +1,30 @@
+@import '../../sass/base';
+
+.login {
+  &__container {
+    position: relative;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    background-color: is-color(primary);
+  }
+
+  &__card {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    background-color: is-color('white');
+  }
+
+  &__form {
+    height: 100%;
+    justify-content: center;
+
+    &__item {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+}

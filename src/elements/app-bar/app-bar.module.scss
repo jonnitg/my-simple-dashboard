@@ -1,0 +1,31 @@
+@import '../../sass/base';
+
+.app-bar {
+  position: fixed;
+  display: inline-flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  width: 100%;
+  padding: 16px;
+  box-sizing: border-box;
+  background-color: is-color('default');
+  z-index: 1;
+
+  &__menu {
+    margin-left: 0;
+  }
+
+  &__configuration {
+    margin-left: auto;
+
+    &__button {
+      margin-right: 0;
+    }
+  }
+
+  &--with-active-sidebar {
+    @include for_size(tablet_landscape_up) {
+      width: calc(100% - 280px);
+    }
+  }
+}

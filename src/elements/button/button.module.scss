@@ -1,0 +1,54 @@
+@import '../../sass/base';
+
+.button {
+  display: inline-block;
+  margin: 0.4em 0.8em;
+  border: 0;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  @include get_font_settings_for(button);
+
+  &--is-transparent {
+    background-color: transparent;
+  }
+
+  @each $color in $all_colors {
+    // Is Outline
+    @include add_class_for_color(border-color, $color, 1, '--is-outline-') {
+      border-width: 2px;
+      border-style: solid;
+
+      &:hover {
+        background-color: is-color($color);
+        @if $color == default or $color == 'gray' or $color == 'black' {
+          color: is-color('white');
+        }
+      }
+    }
+
+    // Is Background
+    @include add_class_for_color(background-color, $color) {
+      @if $color ==
+        default or
+        $color ==
+        primary or
+        $color ==
+        'gray' or
+        $color ==
+        'black'
+      {
+        color: is-color('white');
+      }
+
+      border: is-color($color) 2px solid;
+      &:hover {
+        background-color: transparent;
+        color: is-color('black');
+      }
+    }
+  }
+}

@@ -1,0 +1,61 @@
+@import '../../sass/base';
+
+.input {
+  $self: &;
+  position: relative;
+  width: calc(100% - 14px);
+  height: 2rem;
+  margin: 0;
+  padding: 0;
+  padding-left: 14px;
+  padding-top: 14px;
+  padding-bottom: 2px;
+  background: none;
+  border: none;
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+  line-height: 147.6%;
+  outline: none;
+  -webkit-appearance: none;
+
+  @include get_font_settings_for(input);
+
+  @each $color in $all_colors {
+    @include add_class_for_color(border-bottom-color, $color, 0.2) {
+      &:hover {
+        border-bottom-color: is-color($color, 1);
+      }
+    }
+  }
+
+  &__group {
+    position: relative;
+    width: 20rem;
+    margin-bottom: 1.5rem;
+  }
+
+  &__label {
+    position: absolute;
+    top: 0.9375rem;
+    left: 0.875rem;
+    line-height: 147.6%;
+    color: is-color(default);
+    transition: top 0.2s;
+  }
+
+  &:focus,
+  &:valid {
+    + #{$self}__label {
+      top: 0;
+      margin-bottom: 32px;
+      font-size: 0.9375rem;
+    }
+  }
+
+  &__helper {
+    margin: 2px 14px;
+    font-size: 14px;
+    color: is-color('gray', 0.9);
+    letter-spacing: 0.4;
+  }
+}

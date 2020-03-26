@@ -1,0 +1,54 @@
+@import '../../sass/base';
+
+.sidebar {
+  position: fixed;
+  width: 280px;
+  height: 100vh;
+
+  &__heading {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    width: calc(100% - 18px);
+    height: 4rem;
+    padding-left: 18px;
+    text-align: left;
+    overflow: hidden;
+  }
+
+  &__nav {
+    padding: 1rem 0;
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    list-style: none;
+
+    &--is-sub-nav {
+      padding-left: 16px;
+    }
+
+    &-item {
+      position: relative;
+      overflow: hidden;
+    }
+  }
+
+  &__link {
+    position: relative;
+    display: block;
+    padding: 12px 48px;
+    padding-left: 24px;
+    text-align: left;
+    line-height: 18px;
+    font-size: 100%;
+    overflow: hidden;
+    cursor: pointer;
+
+    &:hover {
+      background-color: is-color('gray', 0.2);
+    }
+  }
+}

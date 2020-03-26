@@ -1,0 +1,13 @@
+@import '../../sass/base';
+
+$all_headings: h1, h2, h3, h4, title, subtitle, logo, navigation, strong;
+
+.heading {
+  margin: 0;
+
+  @each $heading in $all_headings {
+    &--is-#{$heading} {
+      @include get_font_settings_for($heading);
+    }
+  }
+}

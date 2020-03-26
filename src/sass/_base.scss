@@ -1,0 +1,142 @@
+/* FONTS */
+
+/* END -- FONTS */
+
+/* VARIABLES */
+
+// BREAKPOINTS
+$breakpoint_mobile_landscape: 480px;
+$breakpoint_between_mobile_tablet: 628px;
+$breakpoint_tablet_portrait: 768px;
+$breakpoint_tablet_landscape: 992px;
+$breakpoint_desktop: 1200px;
+
+// COLORS
+$primary_color: #2f97c1;
+$secondary_color: #1ccad8;
+$tertiary_color: #15e6cd;
+$success_color: #0cf574;
+$warning_color: #ffc040;
+$danger_color: #fe794e;
+$default_color: #587291;
+$black_color: #283442;
+$white_color: #ecf5f9;
+$gray_color: #41536a;
+
+/* END -- VARIABLES */
+
+/* FUNCTIONS */
+@function is-color($color: default, $opacity: 1) {
+  @if $color == primary {
+    @return rgba($primary_color, $opacity);
+  } @else if $color == secondary {
+    @return rgba($secondary_color, $opacity);
+  } @else if $color == tertiary {
+    @return rgba($tertiary_color, $opacity);
+  } @else if $color == success {
+    @return rgba($success_color, $opacity);
+  } @else if $color == 'gray' {
+    @return rgba($gray_color, $opacity);
+  } @else if $color == 'black' {
+    @return rgba($black_color, $opacity);
+  } @else if $color == 'white' {
+    @return rgba($white_color, $opacity);
+  } @else {
+    @return rgba($default_color, $opacity);
+  }
+}
+/* END -- FUNCTIONS */
+
+/* MIXINS */
+
+$all_colors: primary, secondary, tertiary, success, warning, danger, 'black',
+  'white', 'gray', 'default';
+
+@mixin add_class_for_color($target, $color, $opacity: 1, $prefix: '--is-') {
+  &#{$prefix}#{$color} {
+    #{$target}: is-color($color, $opacity);
+
+    @content;
+  }
+}
+
+@mixin get_font_settings_for($type: paragraph) {
+  @if $type == button or $type == input {
+    font-size: 1em;
+    color: is-color('black');
+  } @else if $type == paragraph {
+    font-size: 1em;
+    color: is-color('black');
+  } @else if $type == h1 {
+    font-size: 3em;
+    margin-bottom: 1em;
+    color: is-color(primary);
+  } @else if $type == h2 {
+    font-size: 2em;
+    margin-bottom: 0.8em;
+    color: is-color(secondary);
+  } @else if $type == h3 {
+    font-size: 1.5em;
+    margin-bottom: 0.6em;
+    padding-bottom: 0.2em;
+    border-bottom: 1px is-color('black', 0.8) solid;
+    color: is-color('black');
+  } @else if $type == h4 {
+    font-size: 1.2em;
+    margin-bottom: 0.4em;
+    color: is-color('black');
+  } @else if $type == navigation {
+    font-size: 1em;
+    color: is-color('black');
+  } @else if $type == logo {
+    font-size: 1.6em;
+    font-weight: bold;
+    color: is-color('black');
+  } @else if $type == title {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: is-color('white');
+    padding-left: 12px;
+  } @else if $type == small {
+    font-size: 0.8em;
+    color: is-color('black');
+  } @else {
+    font-size: 1em;
+    color: is-color('black');
+  }
+}
+
+// MEDIA QUERIES
+@mixin for_size($size) {
+  @if $size == phone_only {
+    @media (max-width: $breakpoint_tablet_portrait) {
+      @content;
+    }
+  } @else if $size == tablet_phone_only {
+    @media (max-width: $breakpoint_desktop) {
+      @content;
+    }
+  } @else if $size == mobile_landscape_up {
+    @media (min-width: $breakpoint_mobile_landscape) {
+      @content;
+    }
+  } @else if $size == between_mobile_tablet_up {
+    @media (min-width: $breakpoint_between_mobile_tablet) {
+      @content;
+    }
+  } @else if $size == tablet_portrait_up {
+    @media (min-width: $breakpoint_tablet_portrait) {
+      @content;
+    }
+  } @else if $size == tablet_landscape_up {
+    @media (min-width: $breakpoint_tablet_landscape) {
+      @content;
+    }
+  } @else if $size == desktop_up {
+    @media (min-width: $breakpoint_desktop) {
+      @content;
+    }
+  }
+}
+
+/* END -- MIXINS */

@@ -1,0 +1,60 @@
+@import '../../sass/base';
+
+.dashboard {
+  display: grid;
+  grid-template-areas:
+    'app-bar'
+    'main';
+  grid-template-rows: 4rem 1fr;
+  width: 100vw;
+  height: 100vh;
+
+  &__main {
+    display: grid;
+    grid-area: main;
+    justify-items: center;
+    align-items: center;
+    padding: 1.2rem;
+  }
+
+  &__container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__sidebar {
+    grid-area: sidebar;
+    top: 0;
+    left: 0;
+    background-color: is-color('white');
+    z-index: 50;
+
+    &-mask {
+      visibility: hidden;
+
+      @include for_size(tablet_phone_only) {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: is-color('black', 0.5);
+        visibility: visible;
+        transform: translateZ(0);
+        transition: opacity 0.2s linear;
+        z-index: 10;
+      }
+    }
+  }
+
+  &__app-bar {
+    grid-area: app-bar;
+  }
+
+  &--with-sidebar {
+    @include for_size(tablet_landscape_up) {
+      margin-left: 280px;
+    }
+  }
+}

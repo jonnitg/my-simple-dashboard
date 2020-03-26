@@ -1,0 +1,12 @@
+@import '../../sass/base';
+
+.form {
+  display: flex;
+  flex-direction: column;
+
+  &__item {
+    display: inline-flex;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+}
